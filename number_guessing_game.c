@@ -61,7 +61,7 @@ int main()
         {
             case 0:
                 printf("Sorteando numero entre 1 e 25...\n");
-                numerosorteado = random0();
+                numerosorteado = randomNumber(1, 25);
 
                 printf("Tente adivinhar o numero!\n");
                 tentativa = 0;
@@ -88,7 +88,7 @@ int main()
 
             case 1:
                 printf("Sorteando numero entre 1 e 50...\n");
-                numerosorteado = random1();
+                numerosorteado = randomNumber(1,50);
 
                 printf("Comecou! Tente adivinhar o numero!\n\n");
                 tentativa = 0;
@@ -115,7 +115,7 @@ int main()
 
             case 2:
                 printf("Sorteando numero entre 1 e 100...\n");
-                numerosorteado = random2();
+                numerosorteado = randomNumber(1,100);
 
                 printf("Comecou! Tente adivinhar o numero!\n\n");
                 tentativa = 0;
@@ -146,25 +146,20 @@ int main()
         }
 }
 
-int random0()
-{
-    srand( (unsigned)time(NULL) );
+int randomNumber(int min, int max){
+    int random = 0, low = 0, high = 0;
 
-    return (1 + rand()%25);
-}
+    if (min < max){
+        low = min;
+        high = max + 1; // include max in output
+    }else{
+        low = max + 1; // include max in output
+        high = min;
+    }
 
-int random1()
-{
-    srand( (unsigned)time(NULL) );
-
-    return (1 + rand()%50);
-}
-
-int random2()
-{
-    srand( (unsigned)time(NULL) );
-
-    return (1 + rand()%100);
+    srand(time(NULL));
+    random = (rand() % (high - low)) + low;
+    return random;
 }
 
 void dicas(int numeroescolhido, int numerosorteado, int tentativa)
