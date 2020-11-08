@@ -67,19 +67,18 @@ int count (int a[ ], int valor);
 
 int main()
 {
-    int a[10], i;
-    int valor;
+    int a[10], i, valor;
 
     printf("Digite os elementos do vetor: \n");
     for (i=0; i<10; i++)
     {
-        scanf("%d", &a[i]);
+        scanf("%i", &a[i]);
     }
 
     printf("Digite o valor para contar os elementos repetidos: ");
-    scanf("%d", &valor);
+    scanf("%i", &valor);
 
-    printf("O numero %d se repetiu %d vezes no vetor\n", valor, count(a, valor));
+    printf("O numero %i se repetiu %i vezes no vetor\n", valor, count(a, valor));
     
     return 0;
 }
@@ -87,9 +86,8 @@ int main()
 int count (int a[ ], int valor) 
 {
     int c=0;
-    int i;
 
-    for (i=0; i<10; i++)
+    for (int i=0; i<10; i++)
     {
         if (a[i] == valor)
         {
